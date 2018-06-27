@@ -5,7 +5,10 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import routes from './routes/index.js';
 
+import { syncHistoryWithStore } from 'react-router-redux';
+import { browserHistory  } from 'react-router'
 
 
 var reducer = function(state,action){
@@ -15,5 +18,8 @@ var reducer = function(state,action){
 	return state;
 }
 var store = createStore(reducer);
-	ReactDOM.render((<Provider store={store}><App /></Provider>), document.getElementById('root'));
+const history = syncHistoryWithStore(browserHistory, store);
+	ReactDOM.render((<Provider store={store}><div>
+		{routes(history)}
+		</div></Provider>), document.getElementById('root'));
 registerServiceWorker();
