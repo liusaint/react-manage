@@ -13,6 +13,7 @@ class Layout extends Component{
 			<Left></Left>
 			<div>
 			<HisTab></HisTab>
+			{this.props.children}
 			</div>
 			<Footer></Footer>
 
