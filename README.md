@@ -12,3 +12,4 @@
   * 中间件　const routerMid = routerMiddleware(browserHistory);
 * react中如何使用scope　css。
 * 如何使用less。
+* 使用create-react-app 生成的项目。webpack配置没有暴露。如何加载less。
