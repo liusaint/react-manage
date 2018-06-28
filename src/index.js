@@ -4,21 +4,25 @@ import './index.css';
 
 import registerServiceWorker from './registerServiceWorker';
 import {
-	createStore
+	createStore,
+	applyMiddleware,
+	combineReducers
 } from 'redux';
 import {
-	Provider
+	Provider,
 } from 'react-redux';
 import routes from './routes/index.js';
 
 import {
-	syncHistoryWithStore
+	syncHistoryWithStore,
+	routerMiddleware,
+	routerReducer
 } from 'react-router-redux';
 import {
 	browserHistory
 } from 'react-router'
 
-
+const routerMid = routerMiddleware(browserHistory);
 
 var reducer = function(state, action) {
 	if (!state) {
@@ -26,11 +30,19 @@ var reducer = function(state, action) {
 	}
 	return state;
 }
-var store = createStore(reducer);
 
+var finaReducer = combineReducers({
+	...reducer,
+	routing:routerReducer
+})
+var store = createStore(finaReducer,applyMiddleware(routerMid));
+var history = syncHistoryWithStore(browserHistory,store)
 
 ReactDOM.render(
-	routes(browserHistory), document.getElementById('root'));
+	(<Provider store={store}>
+		{routes(history)}
+		</Provider>)
+	, document.getElementById('root'));
 
 
 registerServiceWorker();
