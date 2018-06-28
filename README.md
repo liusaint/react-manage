@@ -10,3 +10,5 @@
   * reducer　要加入　 routing:routerReducer
   * history要处理　syncHistoryWithStore(browserHistory,store)
   * 中间件　const routerMid = routerMiddleware(browserHistory);
+* react中如何使用scope　css。
+* 如何使用less。
