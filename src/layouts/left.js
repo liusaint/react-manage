@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 
 class Left extends Component{
 	render(){
-		return (<div>left			
+		return (<div className="left">left			
 			<br/>
 			<Link to="/1">--页1--</Link>
 			<br/> 

@@ -9,12 +9,14 @@ import './layout.less';
 class Layout extends Component{
 	render(){
 		return (
-			<div>
+			<div className = "layout">
 			<Header></Header>
 			<Left></Left>
 			<div>
 			<HisTab></HisTab>
+			<div className="main-content">
 			{this.props.children}
+			</div>
 			</div>
 			<Footer></Footer>
 
