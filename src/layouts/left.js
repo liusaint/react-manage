@@ -7,12 +7,13 @@ class Left extends Component{
 	render(){
 		return (<div className="left">
 
-			<Menu defaultActive="2" className="el-menu-vertical-demo"  >
-				<Link to="/2"><Menu.Item index="1"><i className="el-icon-setting"></i>首页</Menu.Item></Link> 
+			<Menu defaultActive="2-1" className="el-menu-vertical-demo"  >
+				<Menu.Item index="1"><i className="el-icon-setting"></i>首页</Menu.Item>
 
 				<Menu.SubMenu index="2" title={<span><i className="el-icon-message"></i>个人中心</span>}>
 
-
+				<Link to="/1"><Menu.Item index="2-7">page1</Menu.Item></Link> 
+				<Link to="/2"><Menu.Item index="2-8">page2</Menu.Item></Link>
 				<Menu.Item index="2-1">个人信息</Menu.Item>
 				<Menu.Item index="2-2">消息中心</Menu.Item>
 				<Menu.Item index="2-3">公告通知</Menu.Item>

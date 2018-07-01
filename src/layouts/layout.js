@@ -14,7 +14,7 @@ class Layout extends Component{
 			<div className = "layout">
 			<Header></Header>
 			<Left></Left>
-			<div>
+			<div className="right-wrap">
 			<HisTab></HisTab>
 			<div className="main-content">
 			{this.props.children}

@@ -24,15 +24,55 @@ import {
 
 const routerMid = routerMiddleware(browserHistory);
 
-var reducer = function(state, action) {
+var layoutReducer = function(state, action) {
 	if (!state) {
-		state = {};
+		state = {
+			hisTabs:[
+			{
+				title: 'Tab 1',
+				name: 'Tab 1',
+
+			}, {
+				title: 'Tab 2',
+				name: 'Tab 2',
+
+			},
+			],//上面的标签
+			hisTabIndex:2
+		};
+	}
+	switch (action.type) {
+		case 'REMOVE_TAB':
+		debugger;
+
+			state = {
+				...state,
+				hisTabs: [
+					...state.hisTabs.slice(0, action.index),
+					...state.hisTabs.slice(parseInt(action.index) + 1)
+				]
+			}
+			break;
+		case 'ADD_TAB':
+		debugger;
+			state = {
+				...state,
+				hisTabs: [
+					...state.hisTabs,
+					action.tab
+				],
+				hisTabIndex:action.hisTabIndex
+			}
+			break;
+		default:
+
+			break;
 	}
 	return state;
 }
 
 var finaReducer = combineReducers({
-	...reducer,
+	layoutReducer,
 	routing:routerReducer
 })
 var store = createStore(finaReducer,applyMiddleware(routerMid));
