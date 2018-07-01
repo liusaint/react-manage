@@ -13,4 +13,4 @@
 * react中如何使用scope　css。
 * 如何使用less。
 * 使用create-react-app 生成的项目。webpack配置没有暴露。如何加载less。 npm run eject。https://blog.csdn.net/ouyangye831/article/details/76202501
-* 配置https://blog.csdn.net/echo008/article/details/78311831
+* 配置https://blog.csdn.net/echo008/article/details/78311831！
