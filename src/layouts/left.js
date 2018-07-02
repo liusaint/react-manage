@@ -8,7 +8,7 @@ class Left extends Component{
 		return (<div className="left">
 
 			<Menu defaultActive="2-1" className="el-menu-vertical-demo"  >
-				<Menu.Item index="1"><i className="el-icon-setting"></i>首页</Menu.Item>
+			<Link to="/home"><Menu.Item index="1"><i className="el-icon-setting"></i>首页</Menu.Item></Link>
 
 				<Menu.SubMenu index="2" title={<span><i className="el-icon-message"></i>个人中心</span>}>
 

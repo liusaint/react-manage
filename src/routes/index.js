@@ -4,7 +4,8 @@ import { Router, Route,browserHistory } from 'react-router'
 import Page1 from '../views/page1.js'
 import Page2 from '../views/page2.js'
 import Layout from '../layouts/layout.js';
-import root from '../layouts/root.js'
+import root from '../layouts/root.js';
+import Home from '../views/home.js';
 
 function enter(){
 	console.log(666);
@@ -15,6 +16,7 @@ const routes = browserHistory => (
   <Router history={browserHistory}>
   	<Route path="/" component={root}　onEnter={enter}>
 	  <Route path="/" component={Layout}>
+	  		<Route path="/home" component={Home}/>
 		  <Route path="/1" component={Page1}/>
 		  <Route path="/2" component={Page2}/>
 	  </Route>

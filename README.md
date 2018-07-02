@@ -18,3 +18,4 @@
 * 一个action可以修改2个值吗,是不是最佳实践？tabindex与tab。
 * react-router的全局钩子？  比如标签。比如上面的标签。这种高阶组件的思路可以借鉴。https://www.lianyue.org/react-router-authenticated
 * react-router的按需加载？
+* mock数据。
