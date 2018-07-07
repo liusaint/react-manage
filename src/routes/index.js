@@ -16,7 +16,7 @@ const routes = browserHistory => (
   <Router history={browserHistory}>
   	<Route path="/" component={root}　onEnter={enter}>
 	  <Route path="/" component={Layout}>
-	  		<Route path="/home" component={Home}/>
+	  	<Route path="/home" component={Home}/>
 		  <Route path="/1" component={Page1}/>
 		  <Route path="/2" component={Page2}/>
 	  </Route>
