@@ -3,14 +3,22 @@
 const path = require('path')
 const express = require('express')
 
-
+var server;
 
 // default port where dev server listens for incoming traffic
 const port = 3001;
 
 const app = express()
 
-
+//设置cors跨域
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Credentials','true');
+    next();
+};
+app.use(allowCrossDomain);
 
 
 
@@ -27,7 +35,7 @@ var readyPromise = new Promise((resolve, reject) => {
   _reject = reject
 })
 
-var server
+
 var portfinder = require('portfinder')
 portfinder.basePort = port
 
@@ -58,9 +66,16 @@ app.get('/home', function(req, res, next){
 
   var resData = {
     status: 1,
-    data: {
-      img_url: 666
-    }
+    data: [{
+        url:'/1',
+        text:'我的审批',
+        id:1
+      },
+      {
+        url:'/2',
+        text:'消息中心',
+        id:2
+      },]
   }
   res.send(resData);
 });
