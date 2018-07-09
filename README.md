@@ -22,3 +22,16 @@
 * 是否所有数据都要放到redux中去。好处，坏处？
 * reducer的组织。http://www.redux.org.cn/docs/recipes/reducers/SplittingReducerLogic.html
 * 哪些异步需要放在reducer中。公共的？
+* react有哪些最佳实践。https://www.zhihu.com/search?type=content&q=react%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5
+
+* reducer 
+    * reducer也是函数。这个函数有哪些部分，有哪些可以精简出来的。函数如何分解。
+    * 工具函数的提取。
+    * case 函数的提取。
+    * 按域拆分数据
+    * 减少样板代码。createReducer。 
+    * 组合reducer。combineReducers。 高阶reducer。
+* combineReducers 
+    * store.getState()拿到的是什么。在mapStateToProps的时候是如何拿到想要的state的。
+    * 可以在任何级别的 reducer 中使用 combineReducer，不仅仅是在创建根 reducer 的时候。在不同的地方有多个组合的 reducer 是非常常见的，他们组合到一起来创建根 reducer。
+    * reducer的dispatch。是如何查找对应的case的。  

@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import $ from 'jquery';
+import $ from 'jQuery';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
