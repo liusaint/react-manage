@@ -20,5 +20,5 @@
 * react-router的按需加载？
 * mock数据。
 * 是否所有数据都要放到redux中去。好处，坏处？
-* reducer的组织
+* reducer的组织。http://www.redux.org.cn/docs/recipes/reducers/SplittingReducerLogic.html
 * 哪些异步需要放在reducer中。公共的？
