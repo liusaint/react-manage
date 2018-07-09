@@ -4111,7 +4111,7 @@ jest@20.0.4:
   dependencies:
     jest-cli "^20.0.4"
 
-jquery@2.x:
+jquery@2.X:
   version "2.2.4"
   resolved "http://registry.npm.taobao.org/jquery/download/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
 

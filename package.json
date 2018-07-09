@@ -30,7 +30,7 @@
     "html-webpack-plugin": "2.29.0",
     "jQuery": "^1.7.4",
     "jest": "20.0.4",
-    "jquery": "2.x",
+    "jquery": "2.X",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",

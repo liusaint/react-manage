@@ -21,6 +21,7 @@ import {
 import {
 	browserHistory
 } from 'react-router'
+import homeReducer from './views/homeRedux.js'
 
 const routerMid = routerMiddleware(browserHistory);
 
@@ -64,16 +65,15 @@ var layoutReducer = function(state, action) {
 				hisTabIndex:action.hisTabIndex
 			}
 			break;
-		default:
 
-			break;
 	}
 	return state;
 }
 
 var finaReducer = combineReducers({
 	layoutReducer,
-	routing:routerReducer
+	routing:routerReducer,
+	homeReducer
 })
 var store = createStore(finaReducer,applyMiddleware(routerMid));
 var history = syncHistoryWithStore(browserHistory,store)

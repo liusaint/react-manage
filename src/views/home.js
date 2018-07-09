@@ -1,32 +1,28 @@
 
 import React, { Component } from 'react';
-import $ from 'jQuery';
+import $ from 'jquery';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
 
-class Home extends Component{
-	constructor(){
+class Home extends Component {
+	constructor() {
 		super();
-		this.state = {
-			pageList:[
-			]
-		}
+
 	}
-	componentWillMount(){
+	componentWillMount() {
 		var that = this;
 		$.ajax({
-			url: 'http://localhost:3001/home',		
-			dataType: 'json',
-		})
-		.done(function(data) {
-			that.setState({
-				pageList:data.data
+				url: 'http://localhost:3001/home',
+				dataType: 'json',
 			})
-		})	
+			.done(function(data) {
+				that.props.initPageList(data.data);
+			})
 
 	}
 	render() {
-			var pageList = this.state.pageList;
-			return ( <div> 
+		var pageList = this.props.pageList;
+		return (<div> 
 				{
 					pageList.map(
 						(page) => {
@@ -36,7 +32,22 @@ class Home extends Component{
 				}
 
 				</div>)
-			}
+	}
 }
 
-export default Home;
+function mapStateToProps(state){
+	return {
+		pageList:state.homeReducer.pageList
+	}
+}
+function mapDispatchToProps(dispatch){
+	return {
+		initPageList:function(pageList){
+			dispatch({
+				type:'INIT_PAGE_LIST',
+				pageList:pageList
+			})
+		}
+	}
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
