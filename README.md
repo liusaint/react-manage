@@ -34,4 +34,7 @@
 * combineReducers 
     * store.getState()拿到的是什么。在mapStateToProps的时候是如何拿到想要的state的。
     * 可以在任何级别的 reducer 中使用 combineReducer，不仅仅是在创建根 reducer 的时候。在不同的地方有多个组合的 reducer 是非常常见的，他们组合到一起来创建根 reducer。
-    * reducer的dispatch。是如何查找对应的case的。  
+    * reducer的dispatch。是如何查找对应的case的。 
+
+* 异步action
+    * 哪些异步流程要用action。 
