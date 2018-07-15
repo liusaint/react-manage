@@ -38,3 +38,52 @@
 
 * 异步action
     * 哪些异步流程要用action。 
+
+### middleware 与enhancer
+* createStore(reducer,initState,enhancer)
+* middleware 主要作用于store.dispatch。 而enhancer主要是对reducer的处理？
+  * middleware 雏形。
+  ```
+  let next = store.dispatch;
+  store.dispatch = function dispatchAndLog(action) {
+    console.log('dispatching', action);
+    next(action);
+    console.log('next state', store.getState());
+  }
+  ```
+  * 如何写一个中间件。
+  * 如何使用中间件。
+    * applyMiddleware(...middlewares)(createStore)(reducer, initialState); 
+  * 中间件的顺序问题。
+
+* middleware 它提供的是位于 action 被发起之后，到达 reducer 之前的扩展点。
+* 中间件就是一个函数，对store.dispatch方法进行了改造，在发出 Action 和执行 Reducer 这两步之间，添加了其他功能。
+* compose
+* compose 函数则是 applyMiddleware 函数的核心，其会形成串联的函数调用关系，用于增强 dispatch 方法。
+* enhancer(createStore)(reducer, preloadedState)
+* reducer enhancer（或者 higher order reducer）作为一个函数，接收 reducer 作为参数并返回一个新的 reducer，这个新的 reducer 可以处理新的 action，或者维护更多的 state，亦或者将它无法处理的 action 委托给原始的 reducer 处理。这不是什么新模式，combineReducers()也是 reducer enhancer，因为它同样接收多个 reducer 并返回一个新的 reducer。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 学习资料
+* 阮一峰 react技术栈系列 http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html
+* React.js 小书 http://huziketang.mangojuice.top/books/react/
+* Redux 中文文档 http://www.redux.org.cn/
+* 深入React技术栈
+* https://www.jianshu.com/p/c3ab4c0c6830
