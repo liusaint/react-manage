@@ -53,7 +53,7 @@
   ```
   * 如何写一个中间件。
   * 如何使用中间件。
-    * applyMiddleware(...middlewares)(createStore)(reducer, initialState); 
+    * let store = applyMiddleware(createLogger,createMiddleware)(createStore)(rootReducer); 
   * 中间件的顺序问题。
 
 * middleware 它提供的是位于 action 被发起之后，到达 reducer 之前的扩展点。
@@ -76,14 +76,14 @@ function applyMiddleware(...middlewares) {
     //比如异步dispatch。可能middleware中在请求前，请求后都会发送一个dispatch。这里面的dispatch是调用的原始的dispatch,不会走其他中间件?
     var middlewareAPI = {
       getState: store.getState,
-      dispatch: (action) => dispatch(action)
+      dispatch: (action) => dispatch(action)//注意这里为什么不直接传递dispatch??
     }
     //chain = [next => action => {},next => action => {},next => action => {}]
     //相当于是把store的部分接口给middleware使用。并返回一个接收dispatch当参数的函数。
     chain = middlewares.map(middleware => middleware(middlewareAPI))
 
     //一个层层包裹的dispatch。　传入的第一个next是store.dispatch，然后一层一层的包装。
-    //是不是说最先包装的会最后执行？
+    //是不是说最先包装的会最后执行？　不，实际相当于reduceRight而不是reduce，所以应该是按顺序来的?要实测一下。
     dispatch = compose(...chain)(store.dispatch)
 
     //返回一个修改了dispatch的store。
@@ -102,7 +102,8 @@ export default ({ dispatch, getState }) => next => action => {
   return next(action);
 }
 ```
-
+  * 分析文章　https://segmentfault.com/a/1190000008322583
+  * https://www.jianshu.com/p/47887299cabb
 
 
 
