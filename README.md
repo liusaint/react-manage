@@ -65,7 +65,43 @@
 
 
 
+*　applyMiddleware源码分析以及middleware写法
+```
+function applyMiddleware(...middlewares) {
+  return (createStore) => (reducer, preloadedState, enhancer) => {
+    var store = createStore(reducer, preloadedState, enhancer)
+    var dispatch = store.dispatch;
+    var chain = [];
+    //原始的getState与dispatch。给middleware使用.
+    //比如异步dispatch。可能middleware中在请求前，请求后都会发送一个dispatch。这里面的dispatch是调用的原始的dispatch,不会走其他中间件?
+    var middlewareAPI = {
+      getState: store.getState,
+      dispatch: (action) => dispatch(action)
+    }
+    //chain = [next => action => {},next => action => {},next => action => {}]
+    //相当于是把store的部分接口给middleware使用。并返回一个接收dispatch当参数的函数。
+    chain = middlewares.map(middleware => middleware(middlewareAPI))
 
+    //一个层层包裹的dispatch。　传入的第一个next是store.dispatch，然后一层一层的包装。
+    //是不是说最先包装的会最后执行？
+    dispatch = compose(...chain)(store.dispatch)
+
+    //返回一个修改了dispatch的store。
+    return {
+      ...store,
+      dispatch
+    }
+  }
+}
+//一个简单的logger中间件。
+//middleware是一个函数a。传入dispatch，与getState。
+//返回一个新的函数b,b传入修改之后的dispatch，即next。　这个函数给applyMiddleWare调用。
+//在applyMiddleWare中调用b，返回一个修改之后的dispatch。action => { return next(action)}
+export default ({ dispatch, getState }) => next => action => {
+  console.log(action);
+  return next(action);
+}
+```
 
 
 
