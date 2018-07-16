@@ -60,7 +60,23 @@
 * 中间件就是一个函数，对store.dispatch方法进行了改造，在发出 Action 和执行 Reducer 这两步之间，添加了其他功能。
 * compose
 * compose 函数则是 applyMiddleware 函数的核心，其会形成串联的函数调用关系，用于增强 dispatch 方法。
-* enhancer(createStore)(reducer, preloadedState)
+* store enhancer。 enhancer(createStore)(reducer, preloadedState)
+* enhancerCreator是用于创建store enhancer 的函数，也就是说enhancerCreator的执行结果才是一个store enhancer
+* middleware的实现函数applyMiddleware本身就是一个store enhancer。
+* 多个store enhancer共同使用怎么操作？
+* redux 的compose接口。 enhancer的顺序问题。
+```
+const enhancer = compose(
+  applyMiddleware(...middlewares),
+  autLogger()
+);
+
+const store = createStore(
+  reducer，
+  enhancer
+);
+```
+* 注意compose的用法。compose返回的函数，而不是结果。http://www.css88.com/doc/underscore/#compose
 * reducer enhancer（或者 higher order reducer）作为一个函数，接收 reducer 作为参数并返回一个新的 reducer，这个新的 reducer 可以处理新的 action，或者维护更多的 state，亦或者将它无法处理的 action 委托给原始的 reducer 处理。这不是什么新模式，combineReducers()也是 reducer enhancer，因为它同样接收多个 reducer 并返回一个新的 reducer。
 
 
@@ -104,6 +120,8 @@ export default ({ dispatch, getState }) => next => action => {
 ```
   * 分析文章　https://segmentfault.com/a/1190000008322583
   * https://www.jianshu.com/p/47887299cabb
+  * https://segmentfault.com/a/1190000012653724
+  * compose接口 https://www.cnblogs.com/ZSG-DoBestMe/p/5280250.html
 
 
 
