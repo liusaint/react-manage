@@ -123,7 +123,8 @@ export default ({ dispatch, getState }) => next => action => {
   * https://segmentfault.com/a/1190000012653724
   * compose接口 https://www.cnblogs.com/ZSG-DoBestMe/p/5280250.html
 
-
+* 异步
+* 
 
 
 
@@ -142,3 +143,4 @@ export default ({ dispatch, getState }) => next => action => {
 * Redux 中文文档 http://www.redux.org.cn/
 * 深入React技术栈
 * https://www.jianshu.com/p/c3ab4c0c6830
+* https://guoyongfeng.github.io/book/

@@ -22,6 +22,14 @@ import {
 	browserHistory
 } from 'react-router'
 import homeReducer from './views/homeRedux.js'
+import thunk from 'redux-thunk'
+
+var logger = ({ dispatch, getState }) => next => action => {
+  console.log(action);
+  return next(action);
+}
+
+
 
 const routerMid = routerMiddleware(browserHistory);
 
@@ -75,7 +83,7 @@ var finaReducer = combineReducers({
 	routing:routerReducer,
 	homeReducer
 })
-var store = createStore(finaReducer,applyMiddleware(routerMid));
+var store = createStore(finaReducer,applyMiddleware(logger,routerMid,thunk));
 var history = syncHistoryWithStore(browserHistory,store)
 
 ReactDOM.render(
