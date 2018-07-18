@@ -124,7 +124,7 @@ export default ({ dispatch, getState }) => next => action => {
   * compose接口 https://www.cnblogs.com/ZSG-DoBestMe/p/5280250.html
 
 * 异步
-* 
+* redux-thunk。 其实这个插件能做的，并不仅仅是异步。还可以进行其他操作，比如在里面发送多个action。这个中间件是检测action是不是函数。如果是的话，就调用这个action,并且把dispatch传入给函数内部使用。
 
 
 
