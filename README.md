@@ -23,6 +23,7 @@
 * reducer的组织。http://www.redux.org.cn/docs/recipes/reducers/SplittingReducerLogic.html
 * 哪些异步需要放在reducer中。公共的？
 * react有哪些最佳实践。https://www.zhihu.com/search?type=content&q=react%20%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5
+* redux的表单验证。
 
 * reducer 
     * reducer也是函数。这个函数有哪些部分，有哪些可以精简出来的。函数如何分解。

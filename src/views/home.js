@@ -1,7 +1,7 @@
 import React, {
 	Component
 } from 'react';
-import $ from 'jQuery';
+import $ from 'jquery';
 import {
 	Link
 } from 'react-router';
