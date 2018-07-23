@@ -6,6 +6,7 @@ import Page2 from '../views/page2.js'
 import Layout from '../layouts/layout.js';
 import root from '../layouts/root.js';
 import Home from '../views/home.js';
+import Uinfo from '../views/ucenter/uinfo.js';
 
 function enter(){
 	console.log(666);
@@ -19,6 +20,7 @@ const routes = browserHistory => (
 	  	<Route path="/home" component={Home}/>
 		  <Route path="/1" component={Page1}/>
 		  <Route path="/2" component={Page2}/>
+		  <Route path="/uinfo" component={Uinfo}/>
 	  </Route>
 	</Route>  
   </Router>
