@@ -16,7 +16,7 @@ class Left extends Component{
 				<Link to="/2"><Menu.Item index="2-8">page2</Menu.Item></Link>
 				<Link to="/uinfo"><Menu.Item index="2-1">个人信息</Menu.Item></Link>
 				<Menu.Item index="2-2">消息中心</Menu.Item>
-				<Menu.Item index="2-3">公告通知</Menu.Item>
+				<Link to="/notice"><Menu.Item index="2-3">公告通知</Menu.Item></Link>
 				<Menu.Item index="2-4">个人考勤</Menu.Item>
 				<Menu.Item index="2-5">日程安排</Menu.Item>
 				<Menu.Item index="2-6">待办事项</Menu.Item>
