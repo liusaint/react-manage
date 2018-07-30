@@ -26,6 +26,7 @@
 * redux的表单验证。
 * 引入ant design。
 * sublime-text。react格式化：https://www.cnblogs.com/jocongmin/articles/6908595.html   https://www.jianshu.com/p/ecf6c802fdc5
+* 组件与redux。
 
 * reducer 
     * reducer也是函数。这个函数有哪些部分，有哪些可以精简出来的。函数如何分解。
