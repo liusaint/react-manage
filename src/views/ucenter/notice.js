@@ -14,8 +14,9 @@ import {
 	Button,
 	Table,
 	Pagination,
-	Loading
-} from 'element-react'
+	Spin
+} from 'antd'
+// import '../../../node_modules/antd/dist/antd.css';
 
 
 class Notice extends Component {
@@ -118,7 +119,7 @@ class Notice extends Component {
 			<Button type="primary" onClick={this.search.bind(this)}>查询</Button>
 			<Button onClick={this.reset.bind(this)}>重置</Button>
 			</div>
-			<Loading loading={this.state.loading}>
+			<spinning loading={this.state.loading}>
 			<Table
 			style={{
 				width: '100%'
@@ -128,7 +129,7 @@ class Notice extends Component {
 			maxHeight={200}
 			data={this.state.data}
 			/>
-			</Loading>
+			</spinning>
             <Pagination className="mt20" onSizeChange={this.pageSizeChange.bind(this)} onCurrentChange={this.pageChange.bind(this)}   layout="total, sizes, prev, pager, next, jumper" total={400} pageSizes={[10, 20, 50, 100]} pageSize={this.state.pageSize} currentPage={this.state.page}/>
 
 			</div>
