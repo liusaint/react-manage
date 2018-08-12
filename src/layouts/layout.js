@@ -1,6 +1,6 @@
-import { Button } from 'element-react';
+// import { Button } from 'element-react';
 
-import 'element-theme-default';
+// import 'element-theme-default';
 import React, { Component } from 'react';
 import Left from './left.js';
 import Header from './header.js';
