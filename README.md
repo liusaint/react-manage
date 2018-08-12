@@ -1,6 +1,13 @@
 # react-manage
 将以前用jQuery实现的单页应用用react来实现
 
+### todo
+1.组件的按需加载
+2.dva?
+3.layout的重组
+4.ajax请求的封装
+5.目录结构的再次优化。
+
 
 * import React, { Component } from 'react';  需要引入　React
   否则报错　React must be in scope when using JSX;
@@ -131,6 +138,10 @@ export default ({ dispatch, getState }) => next => action => {
 * redux-thunk。 其实这个插件能做的，并不仅仅是异步。还可以进行其他操作，比如在里面发送多个action。这个中间件是检测action是不是函数。如果是的话，就调用这个action,并且把dispatch传入给函数内部使用。
 
 
+
+#### antd
+* 使用了antd报错的解决方案是less和css的webpack配置分开写 https://segmentfault.com/q/1010000010827986
+* 按需加载antd。http://design.alipay.com/develop/web/react/use-with-create-react-app  如果多个页面加载同一个组件的情况是怎样的？
 
 
 
