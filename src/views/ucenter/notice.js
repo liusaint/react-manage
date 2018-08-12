@@ -3,8 +3,8 @@ import $ from 'jquery';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import './notice.less';
-import {Input, Button, Table, Pagination,Spin} from 'antd'
-// import '../../../node_modules/antd/dist/antd.css';
+import {Input, Button, Table, Pagination, Spin} from 'antd'
+import axios from "axios";
 
 class Notice extends Component {
     constructor() {
@@ -36,15 +36,17 @@ class Notice extends Component {
     }
     getList() {
         this.setState({loading: true})
-        $.ajax({
-            url: 'http://localhost:3001/notice-list',
-            data: {
+        var url = 'http://localhost:3001/notice-list';
+        axios({
+            url,
+            
+            params: {
                 ...this.state.searchData,
                 page: this.state.page,
                 pageSize: this.state.pageSize
-            },
-            dataType: 'json'
-        }).done((data) => {
+            },   
+        }).then((response) => {
+            var data = response.data;
             if (1 == data.status) {
                 this.setState({data: data.data})
                 this.setState({loading: false})
@@ -77,7 +79,7 @@ class Notice extends Component {
             this.getList()
         });
     }
-    pageSizeChange(current,pageSize) {
+    pageSizeChange(current, pageSize) {
         this.setState({pageSize: pageSize, page: 1})
         setTimeout(() => {
             this.getList()
@@ -107,17 +109,17 @@ class Notice extends Component {
                         .reset
                         .bind(this)}>重置</Button>
                 </div>
-				<Spin spinning={this.state.loading}>
-                <Table
-                    style={{
-                    width: '100%'
-                }}
-                    className="mt20"
-					columns={this.state.columns}
-					pagination={false}
-                    maxHeight={200}
-                    dataSource={this.state.data}/>
-					</Spin>
+                <Spin spinning={this.state.loading}>
+                    <Table
+                        style={{
+                        width: '100%'
+                    }}
+                        className="mt20"
+                        columns={this.state.columns}
+                        pagination={false}
+                        maxHeight={200}
+                        dataSource={this.state.data}/>
+                </Spin>
 
                 <Pagination
                     className="mt20"
@@ -129,13 +131,12 @@ class Notice extends Component {
                     .bind(this)}
                     layout="total, sizes, prev, pager, next, jumper"
                     total={400}
-					pageSizeOptions={['10', '20', '50', '100','1000']}
-					showQuickJumper = {true}
-					showSizeChanger = {true}
-					defaultPageSize={10}
+                    pageSizeOptions={['10', '20', '50', '100', '1000']}
+                    showQuickJumper={true}
+                    showSizeChanger={true}
+                    defaultPageSize={10}
                     pageSize={this.state.pageSize}
                     current={this.state.page}/>
-					
 
             </div>
         )
