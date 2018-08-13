@@ -8,7 +8,11 @@
 4.ajax请求的封装
 5.目录结构的再次优化。
 
-
+* 按需加载。
+  * https://www.cnblogs.com/little-ab/p/6991721.html
+  * https://blog.csdn.net/mjzhang1993/article/details/54913942
+  * https://www.cnblogs.com/alan2kat/p/7754846.html
+  * http://react-china.org/t/webpack-react-router/10123
 * import React, { Component } from 'react';  需要引入　React
   否则报错　React must be in scope when using JSX;
 * 目录结构
