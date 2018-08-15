@@ -12,12 +12,14 @@ const app = express()
 
 //设置cors跨域
 var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Origin", req.headers.origin||"*"); //需要显示设置来源
+    
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.header('Access-Control-Allow-Credentials','true');
     next();
 };
+// 设置了代理，这里先注释
 app.use(allowCrossDomain);
 
 
@@ -77,7 +79,9 @@ app.get('/home', function(req, res, next){
         id:2
       },]
   }
-  res.send(resData);
+  setTimeout(()=>{
+    res.send(resData);
+  },1000)
 });
 
 
@@ -125,3 +129,46 @@ app.get('/notice-list', function(req, res, next){
   
 });
 
+app.get('/login', function(req, res, next){
+
+  var resData = {
+    status: 1
+  }
+  res.header('Set-Cookie','islogin=true;path=/;');
+  // setTimeout(()=>{
+    res.send(resData);
+    res.end();
+  // },1000)
+});
+
+
+app.get('/get-user-info', function(req, res, next){
+
+  var Cookies = {};
+  req.headers.cookie && req.headers.cookie.split(';').forEach(function( Cookie ) {
+      var parts = Cookie.split('=');
+      Cookies[ parts[ 0 ].trim() ] = ( parts[ 1 ] || '' ).trim();
+  });
+
+  var resData = {};
+
+  if (Cookies.islogin == 'true') {
+    resData = {
+      status: 1,
+      data: {
+        username: 'ls',
+        email: '841766635@qq.com',
+        age: 25
+      }
+    }
+  } else {
+    resData = {
+      status: 0,
+      msg:'not login'
+    }
+  }
+  setTimeout(()=>{
+    res.send(resData);
+  },1000)
+  
+});

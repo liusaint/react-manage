@@ -4,9 +4,10 @@
 ### todo
 1.组件的按需加载
 2.dva?
-3.layout的重组
+3.layout的重新组织。
 4.ajax请求的封装
 5.目录结构的再次优化。
+6.数据mock与不同环境的url切换。
 
 * 按需加载。
   * https://www.cnblogs.com/little-ab/p/6991721.html

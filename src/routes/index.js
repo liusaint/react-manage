@@ -8,6 +8,7 @@ import root from '../layouts/root.js';
 import Home from '../views/home.js';
 import Uinfo from '../views/ucenter/uinfo.js';
 import Notice from '../views/ucenter/notice.js';
+import Testh5 from '../views/testh5.js';
 
 function enter(){
 	console.log(666);
@@ -24,6 +25,7 @@ const routes = browserHistory => (
 		  <Route path="/uinfo" component={Uinfo}/>
 		  <Route path="/notice" component={Notice}/>
 	  </Route>
+		<Route path="/testh5" component={Testh5}/>
 	</Route>  
   </Router>
 );

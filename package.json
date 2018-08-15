@@ -32,6 +32,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
+    "js-cookie": "^2.2.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
@@ -104,5 +105,15 @@
   "devDependencies": {
     "less": "^3.0.4",
     "less-loader": "^4.1.0"
+  },
+  "proxy": {
+    "/proxy": {
+      "target": "http://localhost:3001",
+      "changeOrigin": true,
+      "cookieDomainRewrite": "localhost:3000",
+      "pathRewrite": {
+        "^/proxy": ""
+      }
+    }
   }
 }
